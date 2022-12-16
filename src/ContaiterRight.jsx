@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 export const ContaiterRight = () => {
-  const [value, setValue] = useState("");
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0.5,
+    // triggerOnce: true,
   });
 
   return (
