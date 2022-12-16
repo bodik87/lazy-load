@@ -1,12 +1,22 @@
-export const ContaiterRight = ({ value }) => {
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+
+export const ContaiterRight = () => {
+  const [value, setValue] = useState("");
+  const { ref, inView, entry } = useInView({
+    threshold: 0.5,
+  });
+
   return (
     <div className="container">
       <div className="section">
         <h2>Section</h2>
-        <h3>{value}</h3>
+        <h5>We used React Intersection Observer</h5>
+        <h5>👍</h5>
+        <h3>{`${inView ? "Orange banner is visible!" : ""}`}</h3>
       </div>
 
-      <div className="section banner">
+      <div ref={ref} className={`section banner ${inView ? "active" : ""}`}>
         <h2>Banner</h2>
       </div>
 
